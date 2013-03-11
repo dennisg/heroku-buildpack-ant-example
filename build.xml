@@ -1,0 +1,27 @@
+<project name="heroku-ant-example">
+	
+	
+	<target name="clean">
+		<echo>Cleaning....</echo>
+	</target>
+	
+	<target name="init">
+		<mkdir dir="${basedir}/target"/>
+		<mkdir dir="${basedir}/target/classes"/>
+	</target>
+	
+	<target name="compile">
+		<javac srcdir="src" destdir="${basedir}/target/classes" includeantruntime="false"/>
+	</target>
+	
+	<target name="install" depends="init, compile">
+		<echo>Installing....</echo>
+	</target>
+	
+	<target name="run" depends="install">
+		<echo>Running....</echo>
+		<echo>${ant.library.dir}</echo>
+		<java classpath="${basedir}/target/classes" classname="nl.dennisg.ant.example.Main"></java>
+	</target>
+	
+</project>
